@@ -75,6 +75,7 @@ class DataFormTable extends React.Component {
   };
 
   render() {
+	  // This section determines that the access_level is regarded in the column setup.
     const { classes, form, fields, rows, access_level } = this.props;
 
     rows.forEach(row => {
@@ -88,6 +89,8 @@ class DataFormTable extends React.Component {
     return (
       <Paper className={classes.root}>
         <MaterialTable
+		// This section determines that the access_level parameter is set to readonly regardless
+		// of the admin privilages under the editable section of this table.
           columns={fields.map(f => ({ title: f.prompt, field: f.prompt, readonly: !!f.readonly }))}
           data={rows}
           title={form.form_name + ' - Entries'}
@@ -100,6 +103,10 @@ class DataFormTable extends React.Component {
             pageSize: 15,
             pageSizeOptions: [15, 50, 100, rows.length],
           }}
+		  
+		  // This section defines the ability to edit the table to access_level === 2.
+		  // This means the admin is the only use to be able to edit this section of 
+		  // the table.
           editable={
             access_level === 2
               ? {
