@@ -112,6 +112,16 @@ export default class APIService {
     }
   };
 
+  getProjectNames = async () => {
+    try {
+      const response = await axios.get(`${this.BASE_URL}/project/name`);
+
+      return response.data;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   getProject = async project_id => {
     try {
       const response = await axios.get(`${this.BASE_URL}/project/${project_id}`);
@@ -292,7 +302,7 @@ export default class APIService {
 
   login = async credentials => {
     try {
-      const response = await axios.post(`${this.BASE_URL}/login/`, credentials);
+      const response = await axios.post(`${this.BASE_URL}/token/`, credentials);
       return response;
     } catch (err) {
       console.error(err);
