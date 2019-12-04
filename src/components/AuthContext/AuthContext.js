@@ -26,6 +26,10 @@ class AuthProviderComponent extends React.Component {
         access_level: response.data.access_level,
       });
 
+      if(response.status === 200) {
+        sessionStorage.setItem('jwtToken', response.data.token);
+      }
+
       return response.data.auth;
     } catch (err) {
       console.error(err);
@@ -35,6 +39,7 @@ class AuthProviderComponent extends React.Component {
   };
 
   signout = () => {
+    sessionStorage.removeItem('jwtToken');
     this.setState({ isAuth: false, username: '', access_level: 1 });
   };
 
