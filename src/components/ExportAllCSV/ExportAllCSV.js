@@ -161,7 +161,7 @@ class ExportAllCSV extends Component {
       <div>
         {(selectedForms.length === 0) ? <h3>No form selected. Please select at least one form to export data.</h3> :
           <CSVLink
-            filename={'exported-data_' + moment(new Date()).format('YYYYMMDD-HHmmss')}
+            filename={'exported-data_' + moment(new Date()).format('YYYYMMDD-HHmmss')+'.csv'}
             headers={headers}
             data={rows}>          
               <Button className={classes.group} variant='contained' color='primary'>Download CSV</Button>
