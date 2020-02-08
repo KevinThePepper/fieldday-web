@@ -55,6 +55,7 @@ class SessionFormTable extends React.Component {
 
       const sessionCopy = JSON.parse(JSON.stringify(newData.session));
       sessionCopy.session_json = answers;
+      sessionCopy.date_created = Math.round(Date.parse(newData['Date/Time']) / 1000);
       sessionCopy.date_modified = Math.round(Date.now() / 1000);
 
       try {
