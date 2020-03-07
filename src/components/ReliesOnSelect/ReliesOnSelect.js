@@ -1,3 +1,10 @@
+/*
+* File: ReliesOnSelect.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Allows users to select a field that the field being interacted with relies on.
+*/
+
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
