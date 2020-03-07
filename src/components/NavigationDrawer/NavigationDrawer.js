@@ -1,3 +1,10 @@
+/*
+* File: NavigationDrawer.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: This class contains static methods which set and navigate the
+* left menu. 
+*/
 import React, { Component, Fragment } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { Redirect } from 'react-router-dom';
