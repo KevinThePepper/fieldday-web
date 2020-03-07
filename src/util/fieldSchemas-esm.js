@@ -1,3 +1,10 @@
+/*
+* File: fieldSchemas-esm.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Sets references for different inputs and options on the webpage.
+*/
+
 const SHORT_TEXT = {
   label: 'string',
   required: 'boolean',
