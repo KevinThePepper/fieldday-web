@@ -1,3 +1,10 @@
+/*
+* File: SessionFormViewPage.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a constructor for creating and viewing a new form.
+*/
+
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
