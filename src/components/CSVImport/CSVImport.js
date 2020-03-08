@@ -1,3 +1,9 @@
+/*
+* File: CSVImport.js
+* Version: 1.01 US169
+* Date: 2020-03-02
+* Description: This code allows a user to import CSV data if they have that type of data filled out already.
+*/
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

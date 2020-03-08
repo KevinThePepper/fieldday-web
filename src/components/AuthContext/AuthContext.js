@@ -1,3 +1,9 @@
+/*
+* File: AuthContext.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: User Authentication Handling.
+*/
 import React from 'react';
 
 import { APIContext } from '../APIContext/APIContext';

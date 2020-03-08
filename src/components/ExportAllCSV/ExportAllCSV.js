@@ -1,3 +1,9 @@
+/*
+* File: ExportAllCSV.js
+* Version: 1.01 US171
+* Date: 2020-03-04
+* Description: Takes all data and creates a CSV file that the user can download for record.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

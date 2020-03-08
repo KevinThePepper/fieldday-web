@@ -1,3 +1,9 @@
+/*
+* File: DataFormPopup.js
+* Version: 1.01 US170
+* Date: 2020-03-03
+* Description: Handles form errors and renders user data form popups.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

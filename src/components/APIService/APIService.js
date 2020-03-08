@@ -1,3 +1,9 @@
+/*
+* File: APIService.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: Takes session data and/or user's data and is an API to handle the API service.
+*/
 import axios from 'axios';
 
 const SERVER_ADDRESS_KEY = 'REACT_APP_DB_SERVER_ADDRESS';

@@ -1,3 +1,9 @@
+/*
+* File: DataFromViewPage.js
+* Version: 1.01 US170
+* Date: 2020-03-03
+* Description: Imports the data from the data table and renders the entire data form view page.
+*/
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';

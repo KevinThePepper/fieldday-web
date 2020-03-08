@@ -1,3 +1,9 @@
+/*
+* File: DeleteSessionDialog.js
+* Version: 1.01 US170
+* Date: 2020-03-03
+* Description: If user wants to delete their session or past sessions, this allows them to do so.
+*/
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';

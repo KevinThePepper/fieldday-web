@@ -1,3 +1,9 @@
+/*
+* File: Home.js
+* Version: 1.01 US173
+* Date: 2020-03-05
+* Description: This lays out the home page, imports various themes, and generates/renders the home page.
+*/
 import React, { Component, Fragment } from 'react';
 import Paper from '@material-ui/core/Paper';
 import { Redirect } from 'react-router-dom';

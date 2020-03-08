@@ -1,3 +1,9 @@
+/*
+* File: DataFromTable.js
+* Version: 1.01 US170
+* Date: 2020-03-03
+* Description: Handles and renders data when user decides to view all data in table data forms.
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

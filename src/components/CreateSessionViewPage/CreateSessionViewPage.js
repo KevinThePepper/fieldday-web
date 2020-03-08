@@ -1,3 +1,9 @@
+/*
+* File: CreateSessionViewPage.js
+* Version: 1.01 US169
+* Date: 2020-03-02
+* Description: Handles rendering of a new user session view page.
+*/
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
