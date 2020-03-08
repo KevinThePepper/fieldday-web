@@ -1,3 +1,9 @@
+/*
+* File: BulkAnswerDialog.js
+* Version: 1.01 US168
+* Date: 2020-03-02
+* Description: Render's a final bulk answer set for the user.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
