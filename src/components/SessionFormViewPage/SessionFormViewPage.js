@@ -51,10 +51,10 @@ class SessionFormViewPage extends Component {
               }
             }
             row['Session ID'] = session.session_id;
-            row['Date/Time'] = moment(new Date(session.session_id * 1000)).format(
+            row['Date/Time'] = moment(new Date(session.date_created * 1000)).format(
               'YYYY/MM/DD HH:mm'
             );
-            row['Year'] = moment(new Date(session.session_id * 1000)).format('YYYY');
+            row['Year'] = moment(new Date(session.date_created * 1000)).format('YYYY');
             row.session = session;
             return row;
           });
@@ -83,8 +83,7 @@ class SessionFormViewPage extends Component {
       }
       const fields = [
         { prompt: 'Year', readonly: true },
-        { prompt: 'Date/Time', readonly: true },
-        { prompt: 'Session ID', readonly: true },
+        { prompt: 'Date/Time', readonly: false },
         ...template.start.fields.filter(f => f.type !== 'HIST_BUTTON'),
         ...template.end.fields.filter(f => f.type !== 'HIST_BUTTON'),
       ];
