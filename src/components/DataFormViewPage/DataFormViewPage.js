@@ -106,8 +106,10 @@ class DataFormViewPage extends Component {
       process.env.REACT_APP_BATEMAN_BUILD === 'true' &&
         fields.unshift({ prompt: 'Site', readonly: true });
       fields.unshift({ prompt: 'Session ID' });
-      fields.unshift({ prompt: 'Date/Time', readonly: true });
-      fields.unshift({ prompt: 'Year', readonly: true });
+	  //Removed "readonly: true" from the end of 'Date/Time' to allow the fields to be editable
+      fields.unshift({ prompt: 'Date/Time' });
+	  //Removed "readonly: true" from the end of 'Year' to allow the fields to be editable
+      fields.unshift({ prompt: 'Year' });
       if(hasSpeciesCode) {
         const sppIndex = fields.findIndex(f => {return (f.prompt === 'Species Code');});
         fields.splice(sppIndex+1,0,{ prompt: 'Genus', readonly: true },{ prompt: 'Species', readonly: true });
