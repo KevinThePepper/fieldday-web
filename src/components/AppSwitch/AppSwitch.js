@@ -1,3 +1,9 @@
+/*
+* File: AppSwitch.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: Utilizes React to keep track and route user's through the app.
+*/
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 

@@ -1,3 +1,12 @@
+/*
+* File: SessionDetailPopup.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Contains the information for a popup which contructs: dataForms,
+* getEntries, project_id, row, getProjectName, getAnswerSet, date and returns
+* a dataform with the information that has been input by the user actor.
+*/
+
 import React, { Component } from 'react';
 import moment from 'moment';
 
@@ -147,8 +156,10 @@ class SessionDetailPopup extends Component {
               process.env.REACT_APP_BATEMAN_BUILD === 'true' &&
                 fields.unshift({ prompt: 'Site', readonly: true });
               fields.unshift({ prompt: 'Session ID' });
-              fields.unshift({ prompt: 'Date/Time', readonly: true });
-              fields.unshift({ prompt: 'Year', readonly: true });
+			  //Removed "readonly: true" from the end of 'Date/Time' to allow the fields to be editable
+              fields.unshift({ prompt: 'Date/Time' });
+			  //Removed "readonly: true" from the end of 'Year' to allow the fields to be editable
+              fields.unshift({ prompt: 'Year' });
 
               const hasSpeciesCode = (process.env.REACT_APP_BATEMAN_BUILD === 'true') 
                 && fields.some(f => {return (f.prompt === "Species Code");});

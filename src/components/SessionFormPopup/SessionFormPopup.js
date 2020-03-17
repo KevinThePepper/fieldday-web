@@ -1,3 +1,11 @@
+/*
+* File: SessionFormPopup.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Contains the information for a popup for inputting captured critter information
+* and returns a dataform with the information that has been input by the user actor.
+*/
+
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

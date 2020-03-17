@@ -5,6 +5,7 @@
 * Description: This class contains static methods which set and navigate the
 * left menu. 
 */
+
 import React, { Component, Fragment } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { Redirect } from 'react-router-dom';
@@ -59,22 +60,22 @@ class NavigationDrawer extends Component {
         {access_level === 2 ? (
           <Fragment>
             <List>
-              <Typography variant="caption" className="App-drawer-section-title">
-                MANAGE FORMS
-              </Typography>
-              <ListItem button onClick={() => push('/builder')}>
-                <ListItemIcon>
-                  <BuilderIcon />
-                </ListItemIcon>
-                <ListItemText primary="Form Builder" />
-              </ListItem>
-            </List>
-            <Divider />
-          </Fragment>
-        ) : null}
-        <List>
+			<Typography variant="caption" className="App-drawer-section-title">
+            DOCUMENTATION
+          </Typography>
+          <ListItem button onClick={() => push('/about')}>
+            <ListItemIcon>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="About" />
+          </ListItem>
+        </List>
+		<Divider />
+       </Fragment>
+      ) : null}
+	  <List>
           <Typography variant="caption" className="App-drawer-section-title">
-            EXPORT
+            EXPORT DATA
           </Typography>
           <ListItem button onClick={() => push('/export/all')} >
             <ListItemIcon>
@@ -85,8 +86,8 @@ class NavigationDrawer extends Component {
         </List>
         <Divider />
         <List>
-          <Typography variant="caption" className="App-drawer-section-title">
-            DATA FORMS
+		<Typography variant="caption" className="App-drawer-section-title">
+            CRITTER DATA
           </Typography>
           {dataForms.length ? (
             dataForms.map(form => (
@@ -110,7 +111,7 @@ class NavigationDrawer extends Component {
         <Divider />
         <List>
           <Typography variant="caption" className="App-drawer-section-title">
-            SESSION FORMS
+            SESSION ENTIRES
           </Typography>
           {sessionForms.length ? (
             sessionForms.map(form => (
@@ -154,18 +155,19 @@ class NavigationDrawer extends Component {
           </Fragment>
         ) : null}
         <Divider />
-        <List>
-          <Typography variant="caption" className="App-drawer-section-title">
-            ADMIN
-          </Typography>
-          <ListItem button onClick={() => push('/about')}>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="About" />
-          </ListItem>
-        </List>
-      </Drawer>
+		<List> 
+              <Typography variant="caption" className="App-drawer-section-title">
+                MANAGE FORMS
+              </Typography>
+              <ListItem button onClick={() => push('/builder')}>
+                <ListItemIcon>
+                  <BuilderIcon />
+                </ListItemIcon>
+                <ListItemText primary="Form Builder" />
+              </ListItem>
+            </List>
+            <Divider />
+			</Drawer>
     ) : null;
   }
 }

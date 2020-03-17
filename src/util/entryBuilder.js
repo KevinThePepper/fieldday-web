@@ -1,3 +1,10 @@
+/*
+* File: entryBuilder.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a datatable which imports mock-data.
+*/
+
 import mock from 'mock-data';
 
 const typeGenerators = {

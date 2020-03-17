@@ -1,3 +1,9 @@
+/*
+* File: App.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: Original app setup, importing necessary frameworks.
+*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

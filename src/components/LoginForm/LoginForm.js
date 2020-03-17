@@ -1,3 +1,9 @@
+/*
+* File: LoginForm.js
+* Version: 1.01 US174
+* Date: 2020-03-06
+* Description: Renders the user login page form.
+*/
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';

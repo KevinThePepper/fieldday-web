@@ -1,3 +1,9 @@
+/*
+* File: FormBuilderToolbar.js
+* Version: 1.01 US172
+* Date: 2020-03-04
+* Description: Generates a toolbar that the user can utilize when building their forms.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
