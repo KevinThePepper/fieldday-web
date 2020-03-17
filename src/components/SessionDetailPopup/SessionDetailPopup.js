@@ -1,3 +1,12 @@
+/*
+* File: SessionDetailPopup.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Contains the information for a popup which contructs: dataForms,
+* getEntries, project_id, row, getProjectName, getAnswerSet, date and returns
+* a dataform with the information that has been input by the user actor.
+*/
+
 import React, { Component } from 'react';
 import moment from 'moment';
 

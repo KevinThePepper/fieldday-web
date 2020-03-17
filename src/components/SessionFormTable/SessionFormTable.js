@@ -1,3 +1,10 @@
+/*
+* File: SessionFormTable.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a data table for adding new data into a session.
+*/
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

@@ -1,3 +1,9 @@
+/*
+* File: SessionDetailCard.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Provides a container for the rows on the datatable for the title of Session ID.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
