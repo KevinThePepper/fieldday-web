@@ -1,3 +1,9 @@
+/*
+* File: DataFormRows.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates references for different fields for inputting information from a new session and capture.
+*/
 module.exports = [
   {
     formId: 1,
