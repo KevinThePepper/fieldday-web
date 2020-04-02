@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import DateTimePicker from 'react-datetime-picker';
 import APIService from '../APIService/APIService';
 import moment from 'moment';
 
@@ -31,11 +30,11 @@ export default withStyles(styles)(
       super(props);
       this.state = {
         edit: false,
-        session: null,
         date: null
       };
       this.buttonClick = this.buttonClick.bind(this);
       this.onCalendarChange = this.onCalendarChange.bind(this);
+      this.onSubmit = this.onSubmit.bind(this);
     };
 
     buttonClick = () => {
@@ -50,17 +49,21 @@ export default withStyles(styles)(
       }
     };
 
-    onCalendarChange = async date => {
+    onCalendarChange = async event => {
       let row = this.props.row;
-      let newDate = moment(new Date(date)).format('YYYY/MM/DD HH:mm');
-      row.session['date_modified'] = Math.round(date / 1000);
+      let newDate = moment(new Date(event.target.value)).format('YYYY/MM/DD HH:mm');
+      row.session['date_modified'] = Math.round(new Date(event.target.value) / 1000);
       row['Date/Time'] = newDate;
-
-      try {
-        await this.apiService.putSession(row.session);
-        this.setState({
-          edit: false,
+      this.setState({
           date: newDate
+      });
+    };
+
+    onSubmit = async () => {
+      try {
+        await this.apiService.putSession(this.props.row.session);
+        this.setState({
+          edit: false
         });
         return true;
       } catch (err) {
@@ -83,9 +86,9 @@ export default withStyles(styles)(
                 {entry[0] === "Date/Time" && this.state.edit === false &&
                   (this.state.date !== null ? this.state.date : entry[1])}
                 {entry[0] === "Date/Time" && this.state.edit === true &&
-                  <DateTimePicker
-                      onChange={this.onCalendarChange}
-                      value={new Date(entry[1])}
+                  <input type={"datetime-local"}
+                      onChange={e => this.onCalendarChange(e)}
+                      defaultValue={moment(entry[1]).local().format('YYYY-MM-DDTHH:mm:ss.SSS')}
                   />}
               </p>
             ) : null
@@ -94,6 +97,7 @@ export default withStyles(styles)(
             {this.state.edit === true && `Cancel`}
             {this.state.edit === false && `Edit`}
           </button>
+          {this.state.edit === true ? <button onClick={this.onSubmit}>Submit</button> : ``}
         </Paper>
       );
     }
