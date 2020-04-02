@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import MaterialTable from 'material-table';
+import moment from 'moment';
+import APIService from '../APIService/APIService';
 
 import { AuthContext } from '../AuthContext/AuthContext';
 import { APIContext } from '../APIContext/APIContext';
@@ -20,6 +22,22 @@ const styles = theme => ({
 });
 
 class DataFormTable extends React.Component {
+  apiService = new APIService();
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      edit: false,
+      selectedDate: null,
+      selectedEntry: null,
+      newDate: null
+    };
+    this.onRowUpdate = this.onRowUpdate.bind(this);
+    this.onCalendarChange = this.onCalendarChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  };
+
   onRowUpdate = (newData, oldData) => {
     console.log('oldData', oldData);
     const { putEntry, refetch, moveEntry } = this.props;
@@ -74,13 +92,82 @@ class DataFormTable extends React.Component {
     });
   };
 
+  handleClick = (e, prompt, entry) => {
+    e.preventDefault();
+    if (!isNaN(new Date(prompt))) {
+      let date = new Date(prompt);
+      this.setState({
+        edit: true,
+        selectedDate: date,
+        selectedEntry: entry
+      });
+    }
+  };
+
+  onCalendarChange = async event => {
+    this.setState({
+      newDate: event.target.value
+    });
+  };
+
+  cancelEvent = () => {
+    this.setState({
+      edit: false,
+      selectedDate: null,
+      selectedEntry: null,
+      newDate: null
+    });
+  };
+
+  onSubmit = async event => {
+    event.preventDefault();
+    let date = this.state.newDate;
+    if(!isNaN(new Date(date))) {
+      let entry = this.state.selectedEntry;
+      entry["Date/Time"] = moment(new Date(date)).format('YYYY/MM/DD HH:mm');
+      entry.entry.date_modified = Math.round(new Date(date) / 1000);
+      try {
+        await this.apiService.putEntry(entry.entry);
+        this.setState({
+          edit: false,
+          selectedDate: null,
+          selectedEntry: null,
+          newDate: null
+        });
+        return true;
+      } catch (err) {
+        console.error(err);
+        return false;
+      }
+    }
+  };
+
   render() {
     const { classes, form, fields, rows, access_level } = this.props;
 
     rows.forEach(row => {
       fields.forEach(field => {
-        if (typeof row[field.prompt] === 'object') {
-          row[field.prompt] = 'N/A';
+        if (field.prompt === 'Date/Time') {
+          if (this.state.edit === false) {
+            let date = row[field.prompt];
+            row[field.prompt] =
+              <a href="#" onClick={(e) => this.handleClick(e, date, row)}>
+                {date}
+              </a>
+          } else {
+            if (row.entry === this.state.selectedEntry.entry) {
+              let date = moment(this.state.selectedDate).local().format('YYYY-MM-DDTHH:mm:ss.SSS');
+              row[field.prompt] =
+                <div>
+                  <input type={"datetime-local"}
+                         defaultValue={date}
+                         onChange={this.onCalendarChange}
+                  />
+                  <button onClick={this.onSubmit}>Submit</button>
+                  <button onClick={this.cancelEvent}>Cancel</button>
+                </div>
+            }
+          }
         }
       });
     });
