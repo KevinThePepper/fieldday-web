@@ -100,7 +100,7 @@ class DataFormViewPage extends Component {
       process.env.REACT_APP_BATEMAN_BUILD === 'true' &&
         fields.unshift({ prompt: 'Site', readonly: true });
       fields.unshift({ prompt: 'Session ID' });
-      fields.unshift({ prompt: 'Date/Time', readonly: true });
+      fields.unshift({ prompt: 'Date/Time', readonly: false });
       fields.unshift({ prompt: 'Year', readonly: true });
       if(hasSpeciesCode) {
         const sppIndex = fields.findIndex(f => {return (f.prompt === 'Species Code');});
