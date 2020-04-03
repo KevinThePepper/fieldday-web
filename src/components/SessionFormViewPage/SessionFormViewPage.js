@@ -76,7 +76,7 @@ class SessionFormViewPage extends Component {
       }
       const fields = [
         { prompt: 'Year', readonly: true },
-        { prompt: 'Date/Time', readonly: true },
+        { prompt: 'Date/Time', readonly: false },
         { prompt: 'Session ID', readonly: true },
         ...template.start.fields.filter(f => f.type !== 'HIST_BUTTON'),
         ...template.end.fields.filter(f => f.type !== 'HIST_BUTTON'),
