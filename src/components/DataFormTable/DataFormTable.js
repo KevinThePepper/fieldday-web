@@ -109,7 +109,7 @@ class DataFormTable extends React.Component {
             pageSizeOptions: [15, 50, 100, rows.length],
           }}
           editable={
-            access_level === 1
+            access_level === 2
               ? {
                   onRowUpdate: this.onRowUpdate,
                   onRowDelete: this.onRowDelete,
