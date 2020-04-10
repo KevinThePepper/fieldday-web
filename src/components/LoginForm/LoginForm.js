@@ -154,7 +154,7 @@ class LoginForm extends React.Component {
       <div>
         <div className={classes.logoContainer}>
           <img
-            src="/assets/logo-maroon.png"
+            src="/assets/logo-maroon-onlylizard.png"
             alt={`${APP_NAME} logo`}
             className={classes.logo}
             onClick={this.clickHome}

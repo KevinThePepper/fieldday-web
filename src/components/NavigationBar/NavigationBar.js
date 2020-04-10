@@ -63,7 +63,7 @@ class NavigationBar extends Component {
       <AppBar position="absolute" className={classes.root}>
         <Toolbar>
           <img
-            src="/assets/logo-white.png"
+            src="/assets/logo-maroon-onlylizard.png"
             alt={`${APP_NAME} logo`}
             className={classes.logo}
             onClick={this.clickHome}
