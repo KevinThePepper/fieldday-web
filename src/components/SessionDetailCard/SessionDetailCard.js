@@ -27,6 +27,7 @@ const styles = {
 
 export default withStyles(styles)(
   class SessionDetailCard extends Component {
+
     render() {
       const { classes, title, row } = this.props;
 
@@ -39,7 +40,7 @@ export default withStyles(styles)(
                 <span className={classes.detailTitle}>{`${entry[0]}: `}</span>
                 {entry[1]}
               </p>
-            ) : null;
+            ) : null
           })}
         </Paper>
       );

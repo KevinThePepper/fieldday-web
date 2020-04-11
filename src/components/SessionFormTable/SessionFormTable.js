@@ -15,6 +15,7 @@ import { APIContext } from '../APIContext/APIContext';
 import { AuthContext } from '../AuthContext/AuthContext';
 import SessionDetailPopup from '../SessionDetailPopup/SessionDetailPopup';
 import { DeleteSessionDialog } from '../DeleteSessionDialog/DeleteSessionDialog';
+import APIService from "../APIService/APIService";
 
 const styles = theme => ({
   root: {
@@ -29,6 +30,8 @@ const styles = theme => ({
 });
 
 class SessionFormTable extends React.Component {
+  apiService = new APIService();
+
   state = {
     detailDialogOpen: false,
     deleteDialogOpen: false,
@@ -62,11 +65,19 @@ class SessionFormTable extends React.Component {
 
       const sessionCopy = JSON.parse(JSON.stringify(newData.session));
       sessionCopy.session_json = answers;
+
+      let oldSessionId = JSON.stringify(JSON.parse(sessionCopy.session_id));
       sessionCopy.date_created = Math.round(Date.parse(newData['Date/Time']) / 1000);
       sessionCopy.date_modified = Math.round(Date.now() / 1000);
+      sessionCopy.session_id = Math.round(new Date(newData["Date/Time"]) / 1000);
 
       try {
-        await putSession(sessionCopy);
+        if (oldSessionId !== sessionCopy.session_id) {
+          await this.apiService.deleteSession(oldSessionId);
+          await this.apiService.postSession(sessionCopy)
+        } else {
+          await putSession(sessionCopy);
+        }
         refetch(true);
         resolve();
       } catch (err) {
