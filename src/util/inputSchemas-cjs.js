@@ -1,3 +1,10 @@
+/*
+* File: inputSchemas-cjs.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates references for inputting different types of information.
+*/
+
 const TEXT_FIELD = {
   label: 'string',
   required: 'boolean',

@@ -1,3 +1,10 @@
+/*
+* File: NewFieldDialog.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Cretes a new field dialog for creating an answer set for a new data entry form.
+*/
+
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

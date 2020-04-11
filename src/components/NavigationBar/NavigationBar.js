@@ -1,3 +1,10 @@
+/*
+* File: NavigationBar.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Sets and displays a UI bar at the top of the webpage, which is used to pointer
+* users to information.
+*/
 import React, { Component, Fragment } from 'react';
 import { APP_NAME } from '../../constants.js';
 import PropTypes from 'prop-types';

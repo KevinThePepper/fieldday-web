@@ -1,3 +1,9 @@
+/*
+* File: NavigationUser.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Sets and displays usernames and a logout button on the top right.
+*/
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";

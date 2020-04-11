@@ -1,3 +1,9 @@
+/*
+* File: ExportAllCSV.js
+* Version: 1.01 US171
+* Date: 2020-03-04
+* Description: Takes all data and creates a CSV file that the user can download for record.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -161,7 +167,7 @@ class ExportAllCSV extends Component {
       <div>
         {(selectedForms.length === 0) ? <h3>No form selected. Please select at least one form to export data.</h3> :
           <CSVLink
-            filename={'exported-data_' + moment(new Date()).format('YYYYMMDD-HHmmss')}
+            filename={'exported-data_' + moment(new Date()).format('YYYYMMDD-HHmmss')+'.csv'}
             headers={headers}
             data={rows}>          
               <Button className={classes.group} variant='contained' color='primary'>Download CSV</Button>

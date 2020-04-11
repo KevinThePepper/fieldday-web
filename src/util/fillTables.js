@@ -1,3 +1,10 @@
+/*
+* File: fillTables.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Fills tables with information from forms and answer sets, contains error information.
+*/
+
 const axios = require('axios');
 const projectData = require('./data/Projects');
 const formData = require('./data/DataForms');

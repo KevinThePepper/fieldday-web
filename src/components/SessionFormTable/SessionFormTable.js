@@ -1,3 +1,10 @@
+/*
+* File: SessionFormTable.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a data table for adding new data into a session.
+*/
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -60,6 +67,7 @@ class SessionFormTable extends React.Component {
       sessionCopy.session_json = answers;
 
       let oldSessionId = JSON.stringify(JSON.parse(sessionCopy.session_id));
+      sessionCopy.date_created = Math.round(Date.parse(newData['Date/Time']) / 1000);
       sessionCopy.date_modified = Math.round(Date.now() / 1000);
       sessionCopy.session_id = Math.round(new Date(newData["Date/Time"]) / 1000);
 

@@ -1,3 +1,9 @@
+/*
+* File: FieldListBuilder.js
+* Version: 1.01 US172
+* Date: 2020-03-04
+* Description: Allows user to build a field list and handle the state of that list.
+*/
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
