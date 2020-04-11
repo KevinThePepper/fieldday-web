@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import MaterialTable from 'material-table';
+import APIService from '../APIService/APIService';
 
 import { AuthContext } from '../AuthContext/AuthContext';
 import { APIContext } from '../APIContext/APIContext';
@@ -26,6 +27,8 @@ const styles = theme => ({
 });
 
 class DataFormTable extends React.Component {
+  apiService = new APIService();
+
   onRowUpdate = (newData, oldData) => {
     console.log('oldData', oldData);
     const { putEntry, refetch, moveEntry } = this.props;
@@ -44,15 +47,18 @@ class DataFormTable extends React.Component {
       });
 
       const entryCopy = JSON.parse(JSON.stringify(newData.entry));
-      entryCopy.entry_json = answers;
-      entryCopy.date_modified = Math.round(Date.now() / 1000);
-
       const new_session_id = parseInt(newData['Session ID']);
+      entryCopy.date_modified = Math.round(Date.now() / 1000);
+      entryCopy.entry_id = Math.round(new Date(newData["Date/Time"]) / 1000);
+      entryCopy.entry_json = answers;
 
       try {
         if (!isNaN(new_session_id) && entryCopy.session_id !== new_session_id) {
           entryCopy.session_id = new_session_id;
           await moveEntry(parseInt(oldData['Session ID']), oldData.entry.entry_id, new_session_id);
+        } else if (entryCopy.entry_id !== oldData.entry.entry_id){
+          await this.apiService.deleteEntry(oldData.entry.session_id, oldData.entry.entry_id);
+          await this.apiService.postEntry(entryCopy);
         } else {
           await putEntry(entryCopy);
         }
