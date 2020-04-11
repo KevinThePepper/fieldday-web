@@ -1,3 +1,10 @@
+/*
+* File: RegexSelect.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Sets the answer_set Regex.
+*/
+
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';

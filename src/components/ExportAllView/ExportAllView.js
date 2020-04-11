@@ -1,3 +1,9 @@
+/*
+* File: ExportAllView.js
+* Version: 1.01 US171
+* Date: 2020-03-04
+* Description: Allows user to export all data form types.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';

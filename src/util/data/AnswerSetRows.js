@@ -1,3 +1,10 @@
+/*
+* File: AnswerSetRows.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates references for previously input information in AnswerSetRows.
+*/
+
 module.exports = [
   {
     answer: [

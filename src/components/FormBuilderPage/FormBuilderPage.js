@@ -1,3 +1,9 @@
+/*
+* File: FormBuilderPage.js
+* Version: 1.01 US172
+* Date: 2020-03-04
+* Description: This page handles and builds new user data forms.
+*/
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';

@@ -1,3 +1,10 @@
+/*
+* File: ProjectSelect.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Allows users to select a project on the web app while logging in and sets the theme.
+*/
+
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
