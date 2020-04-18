@@ -61,5 +61,8 @@ typings/
 .next
 
 # intellij
-.idea/
+.idea
+
+# other
 .DS_Store
+build
