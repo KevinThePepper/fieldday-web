@@ -57,9 +57,12 @@ class DataFormViewPage extends Component {
                 }
               }
             }
-            row['Date/Time'] = moment(new Date(entry.entry_id * 1000)).format('YYYY/MM/DD HH:mm');
+            console.log(entry)
+            row['Date/Time'] = moment(new Date(entry.date_created * 1000)).format('YYYY/MM/DD HH:mm');
             row['Year'] = moment(new Date(entry.entry_id * 1000)).format('YYYY');
             row['Session ID'] = entry.session_id;
+            console.log(row);
+
             if (process.env.REACT_APP_BATEMAN_BUILD === 'true') {
               const session = JSON.parse(entry.session_json);
               const site = session.find(f => Object.keys(f)[0] === 'Site');
@@ -105,9 +108,9 @@ class DataFormViewPage extends Component {
         fields.unshift({ prompt: 'Array', readonly: true });
       process.env.REACT_APP_BATEMAN_BUILD === 'true' &&
         fields.unshift({ prompt: 'Site', readonly: true });
-      fields.unshift({ prompt: 'Session ID' });
+      fields.unshift({ prompt: 'Session ID', readonly: true });
 	  //Removed "readonly: true" from the end of 'Date/Time' to allow the fields to be editable
-      fields.unshift({ prompt: 'Date/Time' });
+      fields.unshift({ prompt: 'Date/Time', readonly: true });
       fields.unshift({ prompt: 'Year', readonly: true });
       if(hasSpeciesCode) {
         const sppIndex = fields.findIndex(f => {return (f.prompt === 'Species Code');});
