@@ -59,7 +59,7 @@ class DataFormViewPage extends Component {
             }
             console.log(entry)
             row['Date/Time'] = moment(new Date(entry.date_created * 1000)).format('YYYY/MM/DD HH:mm');
-            row['Year'] = moment(new Date(entry.entry_id * 1000)).format('YYYY');
+            row['Year'] = moment(new Date(entry.date_created * 1000)).format('YYYY');
             row['Session ID'] = entry.session_id;
             console.log(row);
 
