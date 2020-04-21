@@ -65,19 +65,11 @@ class SessionFormTable extends React.Component {
 
       const sessionCopy = JSON.parse(JSON.stringify(newData.session));
       sessionCopy.session_json = answers;
-
-      let oldSessionId = JSON.stringify(JSON.parse(sessionCopy.session_id));
       sessionCopy.date_created = Math.round(Date.parse(newData['Date/Time']) / 1000);
       sessionCopy.date_modified = Math.round(Date.now() / 1000);
-      sessionCopy.session_id = Math.round(new Date(newData["Date/Time"]) / 1000);
 
       try {
-        if (oldSessionId !== sessionCopy.session_id) {
-          await this.apiService.deleteSession(oldSessionId);
-          await this.apiService.postSession(sessionCopy)
-        } else {
-          await putSession(sessionCopy);
-        }
+        await putSession(sessionCopy);
         refetch(true);
         resolve();
       } catch (err) {

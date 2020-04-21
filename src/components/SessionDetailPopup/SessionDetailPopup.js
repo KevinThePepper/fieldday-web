@@ -79,8 +79,8 @@ class SessionDetailPopup extends Component {
               }
             }
           }
-          row['Year'] = moment(new Date(entry.entry_id * 1000)).format('YYYY');
-          row['Date/Time'] = moment(new Date(entry.entry_id * 1000)).format('YYYY/MM/DD HH:mm');
+          row['Year'] = moment(new Date(entry.date_created * 1000)).format('YYYY');
+          row['Date/Time'] = moment(new Date(entry.date_created * 1000)).format('YYYY/MM/DD HH:mm');
           row['Session ID'] = entry.session_id;
           if (process.env.REACT_APP_BATEMAN_BUILD === 'true') {
             const session = JSON.parse(entry.session_json);

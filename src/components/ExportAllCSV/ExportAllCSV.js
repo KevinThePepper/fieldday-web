@@ -76,8 +76,8 @@ class ExportAllCSV extends Component {
       });
 
       if (entry.hasOwnProperty('entry_id')) {
-        row['Year'] = moment(new Date(entry.entry_id * 1000)).format('YYYY');
-        row['Date/Time'] = moment(new Date(entry.entry_id * 1000)).format('YYYY/MM/DD HH:mm:ss');
+        row['Year'] = moment(new Date(entry.date_created * 1000)).format('YYYY');
+        row['Date/Time'] = moment(new Date(entry.date_created * 1000)).format('YYYY/MM/DD HH:mm:ss');
         row['Session Date/Time'] = moment(new Date(entry.session_id * 1000)).format('YYYY/MM/DD HH:mm:ss');
       } else {
         row['Year'] = moment(new Date(entry.session_id * 1000)).format('YYYY');
