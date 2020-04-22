@@ -1,3 +1,9 @@
+/*
+* File: CreateDataEntryViewPage.js
+* Version: 1.01 US169
+* Date: 2020-03-02
+* Description: Initializes the data entry page when user starts data entering process.
+*/
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';

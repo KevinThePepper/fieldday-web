@@ -1,3 +1,10 @@
+/*
+* File: NavigationBar.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Sets and displays a UI bar at the top of the webpage, which is used to pointer
+* users to information.
+*/
 import React, { Component, Fragment } from 'react';
 import { APP_NAME } from '../../constants.js';
 import PropTypes from 'prop-types';
@@ -56,7 +63,7 @@ class NavigationBar extends Component {
       <AppBar position="absolute" className={classes.root}>
         <Toolbar>
           <img
-            src="/assets/logo-white.png"
+            src="/assets/logo-maroon-onlylizard.png"
             alt={`${APP_NAME} logo`}
             className={classes.logo}
             onClick={this.clickHome}

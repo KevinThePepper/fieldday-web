@@ -1,3 +1,10 @@
+/*
+* File: SelectSession.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Allows user actors to select a session and change theme.
+* Note: Handles date component as well.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';

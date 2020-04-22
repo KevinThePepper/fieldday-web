@@ -1,3 +1,9 @@
+/*
+* File: APIService.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: Takes session data and/or user's data and is an API to handle the API service.
+*/
 import axios from 'axios';
 
 const SERVER_ADDRESS_KEY = 'REACT_APP_DB_SERVER_ADDRESS';
@@ -5,6 +11,14 @@ export default class APIService {
   BASE_URL = (process.env.hasOwnProperty(SERVER_ADDRESS_KEY)) ?
     (process.env[SERVER_ADDRESS_KEY] + "/api/v2") :
     ('http://localhost:8000/api/v2');
+
+  getJwtConfig = () => {
+    return {
+      headers: {
+        authorization: 'Bearer ' + sessionStorage.getItem('jwtToken')
+      }
+    }
+  };
 
   // DataForm
 
@@ -22,7 +36,7 @@ export default class APIService {
 
   getDataForm = async form_id => {
     try {
-      const response = await axios.get(`${this.BASE_URL}/data_form/${form_id}`);
+      const response = await axios.get(`${this.BASE_URL}/data_form/${form_id}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -32,7 +46,7 @@ export default class APIService {
 
   postDataForm = async (form, project_id) => {
     try {
-      await axios.post(`${this.BASE_URL}/data_form?project_id=${project_id}`, form);
+      await axios.post(`${this.BASE_URL}/data_form?project_id=${project_id}`, form, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -40,7 +54,7 @@ export default class APIService {
 
   putDataForm = async form => {
     try {
-      await axios.put(`${this.BASE_URL}/data_form/${form.form_id}`, form);
+      await axios.put(`${this.BASE_URL}/data_form/${form.form_id}`, form, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -48,7 +62,7 @@ export default class APIService {
 
   deleteDataForm = async form_id => {
     try {
-      await axios.delete(`${this.BASE_URL}/data_form/${form_id}`);
+      await axios.delete(`${this.BASE_URL}/data_form/${form_id}`, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -68,7 +82,7 @@ export default class APIService {
 
   getAnswerSet = async set_name => {
     try {
-      const response = await axios.get(`${this.BASE_URL}/answer_set/${set_name}`);
+      const response = await axios.get(`${this.BASE_URL}/answer_set/${set_name}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -78,7 +92,7 @@ export default class APIService {
 
   postAnswerSet = async set => {
     try {
-      await axios.post(`${this.BASE_URL}/answer_set`, set);
+      await axios.post(`${this.BASE_URL}/answer_set`, set, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -86,7 +100,7 @@ export default class APIService {
 
   putAnswerSet = async set => {
     try {
-      await axios.put(`${this.BASE_URL}/answer_set/${set.set_name}`, set);
+      await axios.put(`${this.BASE_URL}/answer_set/${set.set_name}`, set, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -94,7 +108,7 @@ export default class APIService {
 
   deleteAnswerSet = async set_name => {
     try {
-      await axios.delete(`${this.BASE_URL}/answer_set/${set_name}`);
+      await axios.delete(`${this.BASE_URL}/answer_set/${set_name}`, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -105,6 +119,16 @@ export default class APIService {
   getProjects = async () => {
     try {
       const response = await axios.get(`${this.BASE_URL}/project`);
+
+      return response.data;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  getProjectNames = async () => {
+    try {
+      const response = await axios.get(`${this.BASE_URL}/project/name`);
 
       return response.data;
     } catch (err) {
@@ -124,7 +148,7 @@ export default class APIService {
 
   postProject = async project => {
     try {
-      await axios.post(`${this.BASE_URL}/project`, project);
+      await axios.post(`${this.BASE_URL}/project`, project, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -132,7 +156,7 @@ export default class APIService {
 
   putProject = async project => {
     try {
-      await axios.put(`${this.BASE_URL}/project/${project.project_id}`, project);
+      await axios.put(`${this.BASE_URL}/project/${project.project_id}`, project, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -140,7 +164,7 @@ export default class APIService {
 
   deleteProject = async project_id => {
     try {
-      await axios.delete(`${this.BASE_URL}/project/${project_id}`);
+      await axios.delete(`${this.BASE_URL}/project/${project_id}`, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -167,7 +191,7 @@ export default class APIService {
     }
 
     try {
-      const response = await axios.get(`${this.BASE_URL}/data_entry${query}`);
+      const response = await axios.get(`${this.BASE_URL}/data_entry${query}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -177,7 +201,7 @@ export default class APIService {
 
   getEntry = async entry_id => {
     try {
-      const response = await axios.get(`${this.BASE_URL}/data_entry/${entry_id}`);
+      const response = await axios.get(`${this.BASE_URL}/data_entry/${entry_id}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -187,7 +211,7 @@ export default class APIService {
 
   postEntry = async entry => {
     try {
-      await axios.post(`${this.BASE_URL}/data_entry`, entry);
+      await axios.post(`${this.BASE_URL}/data_entry`, entry, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -195,7 +219,7 @@ export default class APIService {
 
   putEntry = async entry => {
     try {
-      await axios.put(`${this.BASE_URL}/data_entry/${entry.session_id}/${entry.entry_id}`, entry);
+      await axios.put(`${this.BASE_URL}/data_entry/${entry.session_id}/${entry.entry_id}`, entry, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -203,7 +227,7 @@ export default class APIService {
 
   deleteEntry = async (session_id, entry_id) => {
     try {
-      await axios.delete(`${this.BASE_URL}/data_entry/${session_id}/${entry_id}`);
+      await axios.delete(`${this.BASE_URL}/data_entry/${session_id}/${entry_id}`, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -226,7 +250,7 @@ export default class APIService {
     }
 
     try {
-      const response = await axios.get(`${this.BASE_URL}/session${query}`);
+      const response = await axios.get(`${this.BASE_URL}/session${query}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -236,7 +260,7 @@ export default class APIService {
 
   sessionExists = async session_id => {
     try {
-      const response = await axios.get(`${this.BASE_URL}/session/${session_id}`);
+      const response = await axios.get(`${this.BASE_URL}/session/${session_id}`, this.getJwtConfig());
 
       return response.data;
     } catch (err) {
@@ -246,7 +270,7 @@ export default class APIService {
 
   getSession = async session_id => {
     try {
-      const response = await axios.get(`${this.BASE_URL}/session/${session_id}`);
+      const response = await axios.get(`${this.BASE_URL}/session/${session_id}`, this.getJwtConfig());
       return response.data;
     } catch (err) {
       return undefined;
@@ -255,7 +279,7 @@ export default class APIService {
 
   postSession = async session => {
     try {
-      await axios.post(`${this.BASE_URL}/session`, session);
+      await axios.post(`${this.BASE_URL}/session`, session, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -263,7 +287,7 @@ export default class APIService {
 
   putSession = async session => {
     try {
-      await axios.put(`${this.BASE_URL}/session/${session.session_id}`, session);
+      await axios.put(`${this.BASE_URL}/session/${session.session_id}`, session, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -271,7 +295,7 @@ export default class APIService {
 
   deleteSession = async session_id => {
     try {
-      await axios.delete(`${this.BASE_URL}/session/${session_id}`);
+      await axios.delete(`${this.BASE_URL}/session/${session_id}`, this.getJwtConfig());
     } catch (err) {
       console.error(err);
     }
@@ -281,7 +305,8 @@ export default class APIService {
     try {
       const response = await axios.put(
         `${this.BASE_URL}/data_entry/${session_id}/${entry_id}/move?new_id=${new_id}`,
-        {}
+        {},
+          this.getJwtConfig()
       );
       return response;
     } catch (err) {
@@ -292,7 +317,7 @@ export default class APIService {
 
   login = async credentials => {
     try {
-      const response = await axios.post(`${this.BASE_URL}/login/`, credentials);
+      const response = await axios.post(`${this.BASE_URL}/token/`, credentials);
       return response;
     } catch (err) {
       console.error(err);

@@ -1,3 +1,10 @@
+/*
+* File: SessionFormTable.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a data table for adding new data into a session.
+*/
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -8,6 +15,7 @@ import { APIContext } from '../APIContext/APIContext';
 import { AuthContext } from '../AuthContext/AuthContext';
 import SessionDetailPopup from '../SessionDetailPopup/SessionDetailPopup';
 import { DeleteSessionDialog } from '../DeleteSessionDialog/DeleteSessionDialog';
+import APIService from "../APIService/APIService";
 
 const styles = theme => ({
   root: {
@@ -22,6 +30,8 @@ const styles = theme => ({
 });
 
 class SessionFormTable extends React.Component {
+  apiService = new APIService();
+
   state = {
     detailDialogOpen: false,
     deleteDialogOpen: false,
@@ -55,6 +65,7 @@ class SessionFormTable extends React.Component {
 
       const sessionCopy = JSON.parse(JSON.stringify(newData.session));
       sessionCopy.session_json = answers;
+      sessionCopy.date_created = Math.round(Date.parse(newData['Date/Time']) / 1000);
       sessionCopy.date_modified = Math.round(Date.now() / 1000);
 
       try {

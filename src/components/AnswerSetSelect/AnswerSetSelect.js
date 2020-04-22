@@ -1,3 +1,9 @@
+/*
+* File: AnswerSetSelect.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: Builds the selection menu for the user to make selections.
+*/
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';

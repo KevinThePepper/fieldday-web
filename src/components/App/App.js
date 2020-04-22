@@ -1,3 +1,9 @@
+/*
+* File: App.js
+* Version: 1.01 US228
+* Date: 2020-04-10
+* Description: Original app setup, importing necessary frameworks.
+*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -30,10 +36,10 @@ const styles = theme => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#8c1d40',
+      main: '#343030',
     },
     secondary: {
-      main: '#ffc627',
+      main: '#8c1b3f',
     },
   },
 });

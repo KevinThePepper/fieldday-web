@@ -1,3 +1,9 @@
+/*
+* File: NewAnswerDialog.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Handles creating, submitting and changing NewAnswers.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';

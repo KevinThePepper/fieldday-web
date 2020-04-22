@@ -1,3 +1,9 @@
+/*
+* File: SessionDetailCard.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Provides a container for the rows on the datatable for the title of Session ID.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -21,6 +27,7 @@ const styles = {
 
 export default withStyles(styles)(
   class SessionDetailCard extends Component {
+
     render() {
       const { classes, title, row } = this.props;
 
@@ -33,7 +40,7 @@ export default withStyles(styles)(
                 <span className={classes.detailTitle}>{`${entry[0]}: `}</span>
                 {entry[1]}
               </p>
-            ) : null;
+            ) : null
           })}
         </Paper>
       );

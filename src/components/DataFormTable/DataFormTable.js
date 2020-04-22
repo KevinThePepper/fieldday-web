@@ -1,11 +1,19 @@
+/*
+* File: DataFromTable.js
+* Version: 1.01 US170
+* Date: 2020-03-03
+* Description: Handles and renders data when user decides to view all data in table data forms.
+*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import MaterialTable from 'material-table';
+import APIService from '../APIService/APIService';
 
 import { AuthContext } from '../AuthContext/AuthContext';
 import { APIContext } from '../APIContext/APIContext';
+
 
 const styles = theme => ({
   root: {
@@ -20,6 +28,8 @@ const styles = theme => ({
 });
 
 class DataFormTable extends React.Component {
+  apiService = new APIService();
+
   onRowUpdate = (newData, oldData) => {
     console.log('oldData', oldData);
     const { putEntry, refetch, moveEntry } = this.props;
@@ -38,18 +48,11 @@ class DataFormTable extends React.Component {
       });
 
       const entryCopy = JSON.parse(JSON.stringify(newData.entry));
-      entryCopy.entry_json = answers;
       entryCopy.date_modified = Math.round(Date.now() / 1000);
-
-      const new_session_id = parseInt(newData['Session ID']);
+      entryCopy.entry_json = answers;
 
       try {
-        if (!isNaN(new_session_id) && entryCopy.session_id !== new_session_id) {
-          entryCopy.session_id = new_session_id;
-          await moveEntry(parseInt(oldData['Session ID']), oldData.entry.entry_id, new_session_id);
-        } else {
-          await putEntry(entryCopy);
-        }
+        await putEntry(entryCopy);
         refetch(true);
         resolve();
       } catch (err) {
@@ -74,7 +77,9 @@ class DataFormTable extends React.Component {
     });
   };
 
+
   render() {
+	  // This section determines that the access_level is regarded in the column setup.
     const { classes, form, fields, rows, access_level } = this.props;
 
     rows.forEach(row => {
@@ -88,6 +93,8 @@ class DataFormTable extends React.Component {
     return (
       <Paper className={classes.root}>
         <MaterialTable
+		// This section determines that the access_level parameter is set to readonly regardless
+		// of the admin privilages under the editable section of this table.
           columns={fields.map(f => ({ title: f.prompt, field: f.prompt, readonly: !!f.readonly }))}
           data={rows}
           title={form.form_name + ' - Entries'}
@@ -100,6 +107,10 @@ class DataFormTable extends React.Component {
             pageSize: 15,
             pageSizeOptions: [15, 50, 100, rows.length],
           }}
+		  
+		  // This section defines the ability to edit the table to access_level === 2.
+		  // This means the admin is the only use to be able to edit this section of 
+		  // the table.
           editable={
             access_level === 2
               ? {

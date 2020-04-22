@@ -1,3 +1,9 @@
+/*
+* File: FormList.js
+* Version: 1.01 US172
+* Date: 2020-03-04
+* Description: Extends the forms and adds style to the selected form list.
+*/
 import React, { Component, Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';

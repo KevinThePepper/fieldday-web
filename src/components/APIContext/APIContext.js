@@ -1,3 +1,9 @@
+/*
+* File: APIContext.js
+* Version: 1.01 US167
+* Date: 2020-03-01
+* Description: API to handle the user's session data.
+*/
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 

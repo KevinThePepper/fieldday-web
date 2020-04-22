@@ -1,3 +1,10 @@
+/*
+* File: NotFound.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Handles error for 'lost' webpage.
+*/
+
 import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";

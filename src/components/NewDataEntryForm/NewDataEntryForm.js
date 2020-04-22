@@ -1,3 +1,9 @@
+/*
+* File: NewDataEntryForm.js
+* Version: 1.01
+* Date: 2020-03-07
+* Description: Creates a new data entry form for the user actor to interact with.
+*/
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
